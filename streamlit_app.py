@@ -1,7 +1,4 @@
-from collections import namedtuple
-import altair as alt
-import math
-import pandas as pd
+import openapi
 import streamlit as st
 
 """
@@ -18,5 +15,12 @@ In the meantime, below is an example of what you can do with just a few lines of
 key = st.text_input("API Key")
 prompt = st.text_area("Prompt")
 if st.button('GO'):
-    st.write('Why hello there')
+    openai.api_key = key
+    response = openai.Image.create(
+        prompt=prompt,
+        n=1,
+        size="1024x1024"
+    )
+
     st.write(prompt)
+    st.image(response['data'][0]['url'])
