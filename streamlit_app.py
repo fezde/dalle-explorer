@@ -15,7 +15,8 @@ forums](https://discuss.streamlit.io).
 In the meantime, below is an example of what you can do with just a few lines of code:
 """
 
-st.text_input("API Key")
-st.text_area("Prompt")
+key = st.text_input("API Key")
+prompt = st.text_area("Prompt")
 if st.button('GO'):
     st.write('Why hello there')
+    st.write(prompt)
