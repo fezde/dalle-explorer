@@ -1,4 +1,4 @@
-import openapi
+import openai
 import streamlit as st
 
 """
