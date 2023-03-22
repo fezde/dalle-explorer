@@ -15,7 +15,7 @@ In the meantime, below is an example of what you can do with just a few lines of
 key = st.text_input("API Key")
 prompt = st.text_area("Prompt")
 
-col1, col2, col3 = st.columns([1,3])
+col1, col2 = st.columns([1,3])
 
 if st.button('GO'):
     openai.api_key = key
