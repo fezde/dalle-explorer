@@ -1,3 +1,4 @@
+from os import path
 import openai
 import streamlit as st
 
@@ -21,9 +22,11 @@ if 'prompts' not in st.session_state:
     st.session_state.images = []
 
 key_from_secret = ""
-if "API_KEY" in st.secrets:
-    print("Using key from secrets")
-    key_from_secret = st.secrets["API_KEY"]
+if path.exists("./.streamlit/secrets.toml"):
+    # We do this to not show an error if this file does not exist
+    if "API_KEY" in st.secrets:
+        print("Using key from secrets")
+        key_from_secret = st.secrets["API_KEY"]
 
 key = st.text_input("API Key", type="password", help="Your openAI API Key", value=key_from_secret)
 prompt = st.text_area("Prompt")
